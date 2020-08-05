@@ -36,33 +36,40 @@ Things you may want to cover:
 | first_name           | string | null: false |
 | last_name_reading    | string | null: false |
 | first_name_reading   | string | null: false |
-| birth_year           | string | null: false |
-| birth_month          | string | null: false |
-| birth_day            | string | null: false |
+| birthday             | date   | null: false |
+
 ### Association
 
-- has_many :order
+- has_many :item_user
 - has_many :items
 
 
 ## items テーブル
 
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| image      | string      | null: false                  |
-| name       | string      | null: false                  |
-| info       | text        | null: false                  |
-| price      | integer     | null: false                  |
-| user_id    | references  | null: false ,foreign_key:true|
+| Column           | Type        | Options                      |
+| --------         | ------      | ---------------              |
+| image            | string      | null: false                  |
+| name             | string      | null: false                  |
+| info             | text        | null: false                  |
+| price            | integer     | null: false                  |
+| category         | string      | null: false                  |
+| condition        | string      | null: false                  |
+| delivery_fee     | string      | null: false                  |
+| delivery_region  | string      | null: false                  |
+| delivery_date    | string      | null: false                  |
+| id               | references  | null: false ,foreign_key:true|
+
 
 ### Association
 
 - belongs_to :user
+- has_one    :shipping_address
 - belongs_to :category
 - belongs_to :condition
-- belongs_to :delivery fee
-- belongs_to :delivery region
-- belongs_to :delivery days
+- belongs_to :delivery_fee
+- belongs_to :delivery_region
+- belongs_to :delivery_date
+
 
 ##  category(active hash)
 
@@ -74,6 +81,7 @@ Things you may want to cover:
 
 - has_many :items
 
+
 ## condition (active hash)
 
 | Column     | Type        | Options                      |
@@ -83,6 +91,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
+
 
 ##  delivery fee(active hash)
 
@@ -94,7 +103,8 @@ Things you may want to cover:
 
 - has_many :items
 
-##  delivery region(active hash)
+
+##  delivery_region(active hash)
 
 | Column     | Type        | Options                      |
 | --------   | ------      | ---------------              |
@@ -104,7 +114,8 @@ Things you may want to cover:
 
 - has_many :items
 
-##  delivery days(active hash)
+
+##  delivery_date(active hash)
 
 | Column     | Type        | Options                      |
 | --------   | ------      | ---------------              |
@@ -115,7 +126,7 @@ Things you may want to cover:
 - has_many :items
 
 
-## order テーブル
+## item_user テーブル
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
@@ -140,4 +151,16 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
+- belongs_to :item
+- belongs_to :prefecture
+
+
+##  prefectureテーブル
+
+| Column            | Type       | Options     |
+| -------           | ---------- | ------------|
+| prefecture        | string     | null: false |
+
+### Association
+
+- has_many :items
