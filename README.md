@@ -55,12 +55,13 @@ Things you may want to cover:
 | delivery_fee_id     | integer     | null: false                   |
 | delivery_region_id  | integer     | null: false                   |
 | delivery_date_id    | integer     | null: false                   |
-| user_id             | references  | null: false ,foreign_key:true |
+| user                | references  | null: false ,foreign_key:true |
 
 
 ### Association
 
 - belongs_to :user
+- has_many   :item_user
 - has_one    :shipping_address
 - belongs_to :category
 - belongs_to :condition
