@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :item_user
+- has_many :item_users
 - has_many :items
 
 
@@ -60,72 +60,12 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
-- has_many   :item_user
+- belongs_to :users
+- has_many   :item_users
 - has_one    :shipping_address
-- belongs_to :category
-- belongs_to :condition
-- belongs_to :delivery_fee
-- belongs_to :delivery_region
-- belongs_to :delivery_date
 
 
-##  category(active hash)
-
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| condition  | string      | null: false                  |
-
-### Association
-
-- has_many :items
-
-
-## condition (active hash)
-
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| condition  | string      | null: false                  |
-
-### Association
-
-- has_many :items
-
-
-##  delivery fee(active hash)
-
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| condition  | string      | null: false                  |
-
-### Association
-
-- has_many :items
-
-
-##  delivery_region(active hash)
-
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| condition  | string      | null: false                  |
-
-### Association
-
-- has_many :items
-
-
-##  delivery_date(active hash)
-
-| Column     | Type        | Options                      |
-| --------   | ------      | ---------------              |
-| condition  | string      | null: false                  |
-
-### Association
-
-- has_many :items
-
-
-## item_user テーブル
+## item_users テーブル
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
@@ -134,8 +74,9 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
-- belongs_to :user
+- belongs_to :users
+- belongs_to :items
+
 
 ##  shipping_addressテーブル
 
@@ -150,16 +91,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :item
-- belongs_to :prefecture
-
-
-##  prefectureテーブル(active_hash)
-
-| Column            | Type       | Options     |
-| -------           | ---------- | ------------|
-| prefecture        | string     | null: false |
-
-### Association
-
-- has_many :items
+- belongs_to :items
