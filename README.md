@@ -46,18 +46,16 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column           | Type        | Options                      |
-| --------         | ------      | ---------------              |
-| image            | string      | null: false                  |
-| name             | string      | null: false                  |
-| info             | text        | null: false                  |
-| price            | integer     | null: false                  |
-| category         | string      | null: false                  |
-| condition        | string      | null: false                  |
-| delivery_fee     | string      | null: false                  |
-| delivery_region  | string      | null: false                  |
-| delivery_date    | string      | null: false                  |
-| id               | references  | null: false ,foreign_key:true|
+| Column              | Type        | Options                       |
+| --------            | ------      | ---------------               |
+| name                | string      | null: false                   |
+| info                | text        | null: false                   |
+| price               | integer     | null: false                   |
+| category_id         | integer     | null: false                   |
+| delivery_fee_id     | integer     | null: false                   |
+| delivery_region_id  | integer     | null: false                   |
+| delivery_date_id    | integer     | null: false                   |
+| user_id             | references  | null: false ,foreign_key:true |
 
 
 ### Association
@@ -142,12 +140,12 @@ Things you may want to cover:
 
 | Column            | Type       | Options     |
 | -------           | ---------- | ------------|
-| post_code         | string     | null: false |
-| prefecture        | string     | null: false |
+| post_code         | integer    | null: false |
+| prefecture_id     | integer    | null: false |
 | city              | string     | null: false |
 | house_number      | string     | null: false |
 | building_number   | string     |             |
-| phone_number      | string     | null: false |
+| phone_number      | integer    | null: false |
 
 ### Association
 
@@ -155,7 +153,7 @@ Things you may want to cover:
 - belongs_to :prefecture
 
 
-##  prefectureテーブル
+##  prefectureテーブル(active_hash)
 
 | Column            | Type       | Options     |
 | -------           | ---------- | ------------|
