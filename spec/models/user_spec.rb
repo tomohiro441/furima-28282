@@ -7,8 +7,8 @@ describe User do
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it 'passwordが6文字以上であれば登録できる' do
-        @user.password = '123456'
-        @user.password_confirmation = '123456'
+        @user.password = '123aaaa'
+        @user.password_confirmation = '123aaaa'
         expect(@user).to be_valid
       end
     end
@@ -47,6 +47,12 @@ describe User do
         @user.password_confirmation = '00000'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+      end
+      it 'passwordは半角英数字混合でなければ登録できない' do
+        @user.password = 'abcdefg'
+        @user.password_confirmation = 'abcdefg'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordとpassword_confirmationがそれぞれ入力され、一致していないと登録できない' do
         @user.password_confirmation = ''
