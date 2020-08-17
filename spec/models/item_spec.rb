@@ -46,7 +46,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it '発送元の地域についての情報が選択されていないと登録できない' do
-        @item.delivery_region_id = nil
+        @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery region can't be blank")
       end
