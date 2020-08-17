@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :redirect_user_session_path, except: :index
+  before_action :redirect_user_session_path, except: [:index, :show]
+
+  def index
+    @items = Item.all
+  end
 
   def new
     @item = Item.new
