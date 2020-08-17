@@ -7,7 +7,7 @@ FactoryBot.define do
     category_id            { 3 }
     condition_id           { 3 }
     delivery_fee_id        { 3 }
-    delivery_region_id     { 3 }
+    prefecture_id          { 3 }
     delivery_date_id       { 3 }
   end
 end
