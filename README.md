@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :order
+- has_many :orders
 - has_many :items
 
 
@@ -61,11 +61,11 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :users
-- has_many   :order
-- has_one    :shipping_address
+- has_one    :orders
+- has_one    :addresses
 
 
-## order テーブル
+## orders テーブル
 
 | Column  | Type       | Options                        |
 | ------  | ---------- | ------------------------------ |
@@ -78,7 +78,7 @@ Things you may want to cover:
 - belongs_to :items
 
 
-##  shipping_addressテーブル
+## addressesテーブル
 
 | Column            | Type       | Options     |
 | -------           | ---------- | ------------|
