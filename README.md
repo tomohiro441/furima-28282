@@ -60,9 +60,9 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :users
-- has_one    :orders
-- has_one    :addresses
+- belongs_to :user
+- has_one    :order
+- has_one    :address
 
 
 ## orders テーブル
@@ -74,9 +74,9 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
 
 ## addressesテーブル
 
@@ -88,7 +88,8 @@ Things you may want to cover:
 | house_number      | string     | null: false |
 | building_number   | string     |             |
 | phone_number      | integer    | null: false |
+| order             | references | null: false |
 
 ### Association
 
-- belongs_to :items
+- belongs_to :order
