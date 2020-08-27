@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :item_user do
+  factory :order do
   end
 end
