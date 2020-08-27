@@ -4,10 +4,10 @@ RSpec.describe Item, type: :model do
   before do
     user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
-    @item.image = fixture_file_upload('public/images/test_image.png')
+    @item.image = fixture_file_upload('spec/fixtures/test_image.png')
   end
 
-  describe 'ユーザー新規登録' do
+  describe '商品の出品' do
     context 'アイテムが正しく保存できる場合' do
       it '出品画像、商品名、商品の説明、カテゴリー、商品の状態、配送料の負担、発送元の地域、発送までの日数、価格がそれぞれ正しく存在すれば登録できる' do
         expect(@item).to be_valid
@@ -48,7 +48,7 @@ RSpec.describe Item, type: :model do
       it '発送元の地域についての情報が選択されていないと登録できない' do
         @item.prefecture_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery region can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数についての情報が選択されていないと登録できない' do
         @item.delivery_date_id = nil
