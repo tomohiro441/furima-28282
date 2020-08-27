@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :move_to_sign_in
   before_action :set_item, exept: :new
   before_action :move_to_root
   before_action :move_to_top
@@ -36,15 +37,26 @@ class OrdersController < ApplicationController
     )
   end
 
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to user_session_path
+    end
+  end  
+
   def set_item
     @item = Item.find(params[:item_id])
   end
 
   def move_to_root
-    redirect_to root_path unless @item.order.nil?
+    unless @item.order.nil?
+      redirect_to root_path 
+    end  
   end
 
   def move_to_top
-    redirect_to root_path if current_user.id == @item.user
-  end
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end  
+
 end
