@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:token, :post_code, :prefecture_id, :city, :house_number, :building_number,:phone_number, :item_id).merge(user_id: current_user.id)
+    params.permit(:token, :postal_code, :prefecture_id, :city, :house_number, :building_number,:phone_number, :item_id).merge(user_id: current_user.id)
   end
 
   def pay_item
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   end
    
   def move_to_top
-    if currrent_uesr.id == @item.id
+    if current_user.id == @item.user
     redirect_to root_path
     end
   end

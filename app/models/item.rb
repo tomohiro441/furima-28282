@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :delivery_date
-  has_one_attached :image
+  has_one_attached :image 
   with_options presence: true do
     validates :image
     validates :name
