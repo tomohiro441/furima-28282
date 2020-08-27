@@ -9,14 +9,19 @@ RSpec.describe OrderAddress, type: :model do
     @address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
   end
 
-  describe '配送先情報の登録' do
-    context '配送先住所が正しく保存できる場合' do
+  describe '購入情報の登録' do
+    context '購入情報が正しく保存できる場合' do
       it '郵便番号、都道府県、市区町村、番地、電話番号がそれぞれ正しく存在すれば登録できる' do
         expect(@address).to be_valid
       end
     end
 
-    context '配送先住所が保存できない場合' do
+    context '購入情報が保存できない場合' do
+      it 'tokenが空だと登録できない' do
+        @address.token = nil
+        @address.valid?
+        expect(@address.errors.full_messages).to include("Token can't be blank")
+      end
       it '郵便番号が空だと登録できない' do
         @address.postal_code = nil
         @address.valid?
