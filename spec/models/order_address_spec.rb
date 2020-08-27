@@ -4,7 +4,7 @@ RSpec.describe OrderAddress, type: :model do
   before do
     user =   FactoryBot.create(:user)
     seller = FactoryBot.create(:user)
-    item =  FactoryBot.create(:item, user_id: seller.id)
+    item = FactoryBot.create(:item, user_id: seller.id)
     item.image = fixture_file_upload('spec/fixtures/test_image.png')
     @address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
   end
@@ -25,7 +25,7 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号にハイフン（-）が含まれていないと登録できない' do
         @address.postal_code = '1234567'
         @address.valid?
-        expect(@address.errors.full_messages).to include("Postal code is invalid") 
+        expect(@address.errors.full_messages).to include('Postal code is invalid')
       end
       it '都道府県の情報が空だと登録できない' do
         @address.prefecture_id = nil
@@ -50,7 +50,7 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号にハイフン（-）が含まれていると登録できない' do
         @address.phone_number = '080-1111-1111'
         @address.valid?
-        expect(@address.errors.full_messages).to include("Phone number is invalid") 
+        expect(@address.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end
